@@ -19,3 +19,41 @@ FROM rental;
 Write a query that returns the total number of unique customers payments and the total number of payments
 */
 
+
+/*
+Query 3: GROUP BY and HAVING
+Write a query that returns total number of payments, min, max, and rounded avg payment, and the total amount pay
+PER CUSTOMER which have a total amount paid over > $100.00
+/
+
+/*
+Query 4: Functionally dependent column
+Rewrite query 3 to have a functionally dependent column customer name (last_name, ‘,’, first name)
+*/ 
+
+/*
+Query 5: WHERE vs HAVING - Part 1
+Rewrite query 4 to only display store id = 1 and total amount > 100
+IMPORTANT NOTE: store_id is NOT in the column list so you can NOT put it in the HAVING clause
+*/
+
+/*
+Query 6: WHERE vs HAVING - Part 2
+Rewrite query 5 to include store_id in the column list. Now that store_id is in the column list, you can move the filter to
+the HAVING clause. NOTE: Query 5 is more efficient than Query 6
+*/
+
+/*
+Query 7: WITH ROLLUP
+Rewrite query 6 to no longer summarize at the customer level.
+Instead, it will summarize at the district and city, plus include WITH ROLLUP summary rows.
+Also, do not filter any of the data using a HAVING clause.
+*/
+
+/*
+Query 8: GROUPING and COALESCE functions
+Rewrite Query 7 to replace the null summary values with City Sum and District Sum values
+*/
+
+
+

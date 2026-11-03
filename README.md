@@ -1,7 +1,5 @@
 # Chapter-6---Summary-Queries
 
-# Chapter 5 - Insert, Update, and Delete
-
 ## Table of Contents
 
   - [Tech Stack](#tech-stack)

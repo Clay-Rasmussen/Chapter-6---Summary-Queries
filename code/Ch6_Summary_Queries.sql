@@ -67,10 +67,28 @@ HAVING
     SUM(payment.amount) > 100.00;
 
 /*
+Clay Rasmussen
 Query 5: WHERE vs HAVING - Part 1
 Rewrite query 4 to only display store id = 1 and total amount > 100
 IMPORTANT NOTE: store_id is NOT in the column list so you can NOT put it in the HAVING clause
 */
+SELECT
+    payment.customer_id,
+	CONCAT(customer.last_name, ', ', customer.first_name) AS customer_name,
+    COUNT(payment.payment_id) AS number_of_payment,
+    MIN(payment.amount) AS min_payment,
+    MAX(payment.amount) AS max_payment,
+    ROUND(AVG(payment.amount), 2) AS avg_payment,
+    SUM(payment.amount) AS total_amount_paid
+FROM
+    payment
+INNER JOIN
+        customer ON payment.customer_id=customer.customer_id
+WHERE store_id = 1 
+GROUP BY
+    payment.customer_id
+HAVING
+	SUM(payment.amount) > 100.00;
 
 /*
 Query 6: WHERE vs HAVING - Part 2

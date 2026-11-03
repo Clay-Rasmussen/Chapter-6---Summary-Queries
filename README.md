@@ -219,7 +219,7 @@ This query changed the summary level from individual customers to districts and 
 
 **Screenshot of Output:**
 
-<img src="assets/Ch6Query7.png" alt="Query 7 Output" width="500">
+<img src="assets/CH6Query7.png" alt="Query 7 Output" width="500">
 
 [Back to the top](#table-of-contents)
 

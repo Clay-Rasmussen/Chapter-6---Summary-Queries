@@ -95,6 +95,25 @@ Query 6: WHERE vs HAVING - Part 2
 Rewrite query 5 to include store_id in the column list. Now that store_id is in the column list, you can move the filter to
 the HAVING clause. NOTE: Query 5 is more efficient than Query 6
 */
+SELECT
+    payment.customer_id,
+	CONCAT(customer.last_name, ', ', customer.first_name) AS customer_name,
+	customer.store_id,
+    COUNT(payment.payment_id) AS number_of_payment,
+    MIN(payment.amount) AS min_payment,
+    MAX(payment.amount) AS max_payment,
+    ROUND(AVG(payment.amount), 2) AS avg_payment,
+    SUM(payment.amount) AS total_amount_paid
+FROM
+    payment
+INNER JOIN
+        customer ON payment.customer_id=customer.customer_id
+WHERE store_id = 1
+GROUP BY
+    customer.customer_id
+HAVING
+	SUM(payment.amount) > 100.00 &&
+	store_id = 1
 
 /*
 Query 7: WITH ROLLUP

@@ -91,6 +91,7 @@ HAVING
 	SUM(payment.amount) > 100.00;
 
 /*
+Jacob Mundt
 Query 6: WHERE vs HAVING - Part 2
 Rewrite query 5 to include store_id in the column list. Now that store_id is in the column list, you can move the filter to
 the HAVING clause. NOTE: Query 5 is more efficient than Query 6
@@ -108,7 +109,6 @@ FROM
     payment
 INNER JOIN
         customer ON payment.customer_id=customer.customer_id
-WHERE store_id = 1
 GROUP BY
     customer.customer_id
 HAVING

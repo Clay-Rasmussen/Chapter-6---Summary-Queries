@@ -15,6 +15,7 @@ SELECT COUNT(*) AS total_rentals,
 FROM rental;
  
  /*
+Jacob Mundt
  Query 2: COUNT(DISTINCT column)
 Write a query that returns the total number of unique customers payments and the total number of payments
 */
@@ -44,9 +45,26 @@ HAVING
     SUM(amount) > 100.00;
 
 /*
+Jacob Mundt
 Query 4: Functionally dependent column
 Rewrite query 3 to have a functionally dependent column customer name (last_name, ‘,’, first name)
 */ 
+SELECT
+    payment.customer_id,
+        CONCAT(customer.last_name, ', ', customer.first_name) AS csutomer_name,
+    COUNT(payment.payment_id) AS number_of_payment,
+    MIN(payment.amount) AS min_payment,
+    MAX(payment.amount) AS max_payment,
+    ROUND(AVG(payment.amount), 2) AS avg_payment,
+    SUM(payment.amount) AS total_amount_paid
+FROM
+    payment
+INNER JOIN
+        customer ON payment.customer_id=customer.customer_id
+GROUP BY
+    payment.customer_id
+HAVING
+    SUM(payment.amount) > 100.00;
 
 /*
 Query 5: WHERE vs HAVING - Part 1

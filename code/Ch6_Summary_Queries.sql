@@ -18,7 +18,10 @@ FROM rental;
  Query 2: COUNT(DISTINCT column)
 Write a query that returns the total number of unique customers payments and the total number of payments
 */
-
+SELECT
+    count(DISTINCT customer_id) AS unique_customers,
+    count(*) AS total_num_of_payment
+FROM payment
 
 /*
 Query 3: GROUP BY and HAVING

@@ -137,9 +137,22 @@ INNER JOIN city ON address.city_id = city.city_id
 GROUP BY address.district, city.city WITH ROLLUP;
 
 /*
+Jacob Mundt
 Query 8: GROUPING and COALESCE functions
 Rewrite Query 7 to replace the null summary values with City Sum and District Sum values
 */
-
+SELECT
+    COALESCE(address.district, 'District Sum') AS district,
+    COALESCE(city.city, 'City Sum') AS city,
+    COUNT(payment.payment_id) AS number_of_payment,
+    MIN(payment.amount) AS min_payment,
+    MAX(payment.amount) AS max_payment,
+    ROUND(AVG(payment.amount), 2) AS avg_payment,
+    SUM(payment.amount) AS total_amount_paid
+FROM payment
+INNER JOIN customer ON payment.customer_id = customer.customer_id
+INNER JOIN address ON customer.address_id = address.address_id
+INNER JOIN city ON address.city_id = city.city_id
+GROUP BY address.district, city.city WITH ROLLUP;
 
 

@@ -116,11 +116,25 @@ HAVING
 	store_id = 1
 
 /*
+Clay Rasmussen
 Query 7: WITH ROLLUP
 Rewrite query 6 to no longer summarize at the customer level.
 Instead, it will summarize at the district and city, plus include WITH ROLLUP summary rows.
 Also, do not filter any of the data using a HAVING clause.
 */
+SELECT 
+    address.district,
+    city.city,
+    COUNT(payment.payment_id) AS number_of_payment, 
+    MIN(payment.amount) AS min_payment, 
+    MAX(payment.amount) AS max_payment, 
+    ROUND(AVG(payment.amount), 2) AS avg_payment, 
+    SUM(payment.amount) AS total_amount_paid 
+FROM payment 
+INNER JOIN customer ON payment.customer_id = customer.customer_id
+INNER JOIN address ON customer.address_id = address.address_id
+INNER JOIN city ON address.city_id = city.city_id
+GROUP BY address.district, city.city WITH ROLLUP;
 
 /*
 Query 8: GROUPING and COALESCE functions

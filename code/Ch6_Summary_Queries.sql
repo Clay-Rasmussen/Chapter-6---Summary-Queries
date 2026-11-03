@@ -1,7 +1,7 @@
 /*
 Chapter 6 Assignment: Summary Queries
 Name: Clay Rasmussen Jacob Mundt
-Date: 
+Date: 11/3/26
 GitHub URL: https://github.com/Clay-Rasmussen/Chapter-6---Summary-Queries
 */
 
